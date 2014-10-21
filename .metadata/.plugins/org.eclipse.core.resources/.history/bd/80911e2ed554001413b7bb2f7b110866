@@ -1,0 +1,15 @@
+package org.thinker.service;
+
+public class SampleService {
+	
+	public void doA(){
+		
+	}
+	public void doB(){
+			
+		}
+	public void doC(){
+		
+	}
+
+}

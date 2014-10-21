@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<context:annotation-config></context:annotation-config>
+	<context:component-scan base-package="a1"></context:component-scan>
+	<context:component-scan base-package="org.thinker.service"></context:component-scan>
+<bean id="sampleLogger" class="org.thinker.aop.SampleLogger"></bean>
+
+<aop:config>
+
+  <aop:pointcut expression="execution(* org.thinker.service.*.*(..))" id="logPointcut"/>
+  <aop:aspect id='logAspect' ref="sampleLogger">
+    <aop:around method="log" pointcut-ref="logPointcut"/>
+  </aop:aspect>
+  
+</aop:config>
+<!-- 복사하는 부분 -->
+	<bean id="dataSource"  class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+	  <property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
+	  <!-- 계정, 포트, ip -->
+	  <property name="url" value="jdbc:oracle:thin:@thinker.ipdisk.co.kr:1521:orcl" />
+	  <property name="username" value="user00" />
+	  <property name="password" value="rkddycjs" />
+	</bean>
+		
+	<!-- 복사하는 부분 -->
+	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+  	  <property name="dataSource" ref="dataSource" />
+	</bean>
+		
+	<!-- 복사하는 부분 -->
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+  	  <property name="dataSource" ref="dataSource" />
+      <property name="transactionFactory">
+        <bean class="org.apache.ibatis.transaction.managed.ManagedTransactionFactory" />
+      </property>  
+    </bean>
+    <!-- 자동으로 뭔가 만들어 내는 녀석. -->
+    <mybatis-spring:scan base-package="org.thinker.**.mapper"/>
+
+</beans>

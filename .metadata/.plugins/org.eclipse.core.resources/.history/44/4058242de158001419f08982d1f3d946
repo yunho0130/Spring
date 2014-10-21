@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>Test HTML</h1>
+	
+	<!-- <form action="/web/member/listJson" target="zeroframe">
+		<input type='submit'>
+	</form> -->
+	
+	<button onclick="javascript:makeFrame();">ADDD</button>
+	
+	<iframe name="zeroframe" src="/web/resources/iframe.html">
+	
+	</iframe>
+	
+</body>
+</html>

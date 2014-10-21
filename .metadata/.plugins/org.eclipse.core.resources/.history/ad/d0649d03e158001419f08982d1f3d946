@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>Test HTML</h1>
+	
+	<form action="" target="zeroframe">
+		<input type='submit'>
+	</form>
+	
+	<iframe name="zeroframe">
+	
+	</iframe>
+	
+</body>
+</html>

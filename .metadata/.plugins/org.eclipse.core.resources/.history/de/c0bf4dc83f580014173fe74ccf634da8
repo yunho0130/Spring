@@ -1,0 +1,43 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 5 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h1>Hello world!</h1>
+<div>
+    <ul>
+        <li id="maintime">${serverTime}</li>
+    </ul>
+</div>
+
+
+<button onclick="myTime()">Time Refresh</button>
+<br>
+
+<iframe name="secondframe" id="2nd" src="/secondframe"></iframe>
+<script>
+    function myTime(){
+        var textnode= document.getElementById("2nd").childNodes[0];
+        console.log("1번 로그");
+        console.log(textnode);
+        var item=document.getElementById("maintime").childNodes[0];
+        console.log("2번 로그");
+        console.log(item);
+        document.getElementById("maintime").replaceChild(textnode, item);
+//        console.log("로그시작");
+//        console.log(orignTime);
+//        var secondTime = document.getElementById("2nd");
+        var secondTime = document.getElementById("2nd").childNodes[0];
+        console.log("로그시작2");
+        console.log(secondTime);
+//        orignTime.replaceChild(secondTime, orignTime.childNodes[0]);
+//        document.getElementById("maintime").remove();
+
+    }
+</script>
+</body>
+</html>

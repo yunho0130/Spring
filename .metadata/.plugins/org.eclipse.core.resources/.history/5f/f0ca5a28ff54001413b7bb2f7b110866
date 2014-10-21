@@ -1,0 +1,11 @@
+package a1;
+
+public class People {
+	
+	Snack Beer;
+	String name;
+	
+	
+	
+
+}

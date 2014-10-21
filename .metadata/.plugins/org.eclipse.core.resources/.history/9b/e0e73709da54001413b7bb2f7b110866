@@ -1,0 +1,20 @@
+package org.thinker.aop;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+public class SampleLogger {
+	
+	private static Logger logger = LoggerFactory.getLogger("SampleLogger");
+	
+	public void log(){
+		logger.info("----------------");
+		logger.info("----------------");
+		logger.info("----------------");
+		logger.info("----------------");
+		logger.info("----------------");
+		logger.info("----------------");
+		
+	}
+
+}

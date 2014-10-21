@@ -1,0 +1,7 @@
+package a1;
+
+import snack;
+
+public class Beer extends snack {
+
+}
