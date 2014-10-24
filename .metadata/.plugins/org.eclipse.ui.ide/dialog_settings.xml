@@ -141,15 +141,17 @@
 		<item value="true" key="WizardProjectsImportPage.STORE_COPY_PROJECT_ID"/>
 		<item value="false" key="WizardProjectsImportPage.STORE_ARCHIVE_SELECTED"/>
 		<list key="WizardProjectsImportPage.STORE_DIRECTORIES">
+			<item value="C:\Users\Administrator\Desktop\140929_mp3_Prof"/>
+			<item value="C:\Users\Administrator\Desktop\sp4-master (2)\sp4-master"/>
+			<item value="C:\Users\Administrator\Desktop\sp4-master (2)"/>
+			<item value="C:\Users\Administrator\Desktop\카카오톡 받은 파일\board"/>
 			<item value="C:\Users\Administrator\Desktop\sp4-master (1)"/>
-			<item value="C:\Users\Administrator\Desktop\web (1)"/>
-			<item value="C:\Users\Administrator\Desktop\명진아결제해야지"/>
-			<item value="C:\Users\Administrator\Desktop\Han_Bbs"/>
-			<item value="C:\Users\Administrator\Desktop\카카오톡 받은 파일\web"/>
 		</list>
 		<list key="WizardProjectsImportPage.STORE_ARCHIVES">
 			<item value=""/>
 		</list>
+	</section>
+	<section name="NewWizardAction">
 	</section>
 	<section name="org.springsource.ide.eclipse.commons.quicksearch.ui.QuickSearchDialog.DIALOG_SETTINGS">
 		<item value="true" key="CASE_SENSITIVE"/>

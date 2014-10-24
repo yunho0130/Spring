@@ -1,9 +1,0 @@
-package org.thinker.service;
-
-public class SampleService {
-	
-	public void doA(){
-		
-	}
-
-}
