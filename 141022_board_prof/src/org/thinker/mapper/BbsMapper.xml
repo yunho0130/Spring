@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.thinker.mapper.BbsMapper">
+ <select id="read" parameterType="int" resultType="org.thinker.vo.BbsVO">
+  select *  from tbl_bbs where bbsno = #{bbsno}
+ </select>
+ 
+ <insert id="create" parameterType="org.thinker.vo.BbsVO" >
+  
+  insert into tbl_bbs (bbsno, title, content, writer)
+  values(seq_bbs.nextval, #{title}, #{content}, #{writer})
+ 
+ </insert>
+ 
+</mapper>

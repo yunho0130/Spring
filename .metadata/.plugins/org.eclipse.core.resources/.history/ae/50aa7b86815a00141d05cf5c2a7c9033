@@ -1,0 +1,52 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<div>
+	<h3>This is infoPage</h3>
+</div>
+
+<div id="fileDesc">
+</div>
+
+<button onClick="alert()" id="fileDescTest">test</button>
+
+<script>
+function alert(){
+		alert("Success");
+}
+
+var resultDiv2 = document.getElementById("fileinfo");
+var xhr2 = new XMLHttpRequest();
+console.log(xhr2);
+xhr2.open("get", "/140929_mp3_Prof/info", true);
+xhr2.send(null);
+xhr2.onreadystatechange = function(){
+    if(xhr2.readyState==4 && xhr2.status == 200){
+        var fileList2 = xhr2.responseText;
+        resultDiv2.innerHTML = fileList2;
+        
+    }
+}
+
+</script>
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+

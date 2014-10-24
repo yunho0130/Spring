@@ -1,0 +1,5 @@
+package org.thinker.mp3.controller;
+
+public interface Part {
+
+}

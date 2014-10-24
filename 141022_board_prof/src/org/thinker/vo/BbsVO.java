@@ -1,0 +1,54 @@
+/*
+ * BbsVO 게시물 번호, 타이틀, 작성자, 내용, 등록일 받아옴
+ */
+
+package org.thinker.vo;
+
+import java.util.Date;
+
+public class BbsVO {
+
+	private int bbsno;
+	private String title;
+	private String writer;
+	private String content;
+	private Date regDate;
+	public int getBbsno() {
+		return bbsno;
+	}
+	public void setBbsno(int bbsno) {
+		this.bbsno = bbsno;
+	}
+	public String getTitle() {
+		return title;
+	}
+	public void setTitle(String title) {
+		this.title = title;
+	}
+	public String getWriter() {
+		return writer;
+	}
+	public void setWriter(String writer) {
+		this.writer = writer;
+	}
+	public String getContent() {
+		return content;
+	}
+	public void setContent(String content) {
+		this.content = content;
+	}
+	public Date getRegDate() {
+		return regDate;
+	}
+	public void setRegDate(Date regDate) {
+		this.regDate = regDate;
+	}
+	@Override
+	public String toString() {
+		return "BbsVO [bbsno=" + bbsno + ", title=" + title + ", writer="
+				+ writer + ", content=" + content + ", regDate=" + regDate
+				+ "]";
+	}
+	
+	
+}

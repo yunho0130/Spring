@@ -1,0 +1,112 @@
+package org.thinker.mp3.controller;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.UUID;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
+
+import org.thinker.mp3.service.Mp3Service;
+import org.thinker.mp3.vo.MP3;
+
+/**
+ * Servlet implementation class UploadController
+ */
+@WebServlet("/upload")
+@MultipartConfig(fileSizeThreshold = 1024 * 1024 * 2, // 2MB
+maxFileSize = 1024 * 1024 * 10, // 10MB
+maxRequestSize = 1024 * 1024 * 50)
+// 50MB
+public class UploadController1 extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+
+	/**
+	 * @see HttpServlet#HttpServlet()
+	 */
+	public UploadController1() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doGet(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
+
+		request.getRequestDispatcher("/WEB-INF/jsp/upload.jsp").forward(
+				request, response);
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doPost(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
+
+		MP3 mp3 = new MP3(request.getParameter("filename"),
+				request.getParameter("desc"));
+
+		Mp3Service.instance.addMp3(mp3);
+
+		System.out.println(mp3);
+
+		response.sendRedirect("upload");
+		// 사용자의 URL자체가 List를 가르키게 함.
+
+		/**
+		 * handles file upload
+		 */
+		// gets absolute path of the web application
+//		String appPath = request.getServletContext().getRealPath("");
+//		String appPath = "C:\\zzz";
+		String appPath = new ListController().path;
+		System.out.println(appPath);
+//		appPath.replace("\\", "/");
+//		System.out.println(appPath);
+		// constructs path of the directory to save uploaded file
+		String key = UUID.randomUUID().toString();
+		String savePath = appPath + File.separator;
+
+// creates the save directory if it does not exists
+//		File fileSaveDir = new File(savePath);
+//		if (!fileSaveDir.exists()) {
+//			fileSaveDir.mkdir();
+//		}
+		System.out.println(savePath);
+//		System.out.println(request.getParts());
+		
+		for (Part part : request.getParts()) {
+			String filename = extractfilename(part);
+//			String filename = request.getParameter("filename");
+			part.write(savePath + File.separator + key +'_'+ filename);
+		}
+		System.out.println("업로드 프로세스 종료");
+//		getServletContext().getRequestDispatcher("/WEB-INF/jsp/message.jsp").forward(
+//				request, response);
+
+	}
+
+	/**
+	 * Extracts file name from HTTP header content-disposition
+	 */
+	private String extractfilename(Part part) {
+		String contentDisp = part.getHeader("content-disposition");
+		String[] items = contentDisp.split(";");
+		for (String s : items) {
+			if (s.trim().startsWith("filename")) {
+				return s.substring(s.indexOf("=") + 2, s.length() - 1);
+			}
+		}
+		return "";
+	}
+
+}
